@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- node
+cache:
+  directories:
+  - node_modules
+before_deploy:
+- npm install now --no-save
+- now rm node-cd --token $NOW_TOKEN --yes || true
+deploy:
+- provider: script
+  script: now --public --token $NOW_TOKEN
+  skip_cleanup: true
+  on:
+    master: true
+env:
+  global:
+  - secure: CRa0aU/LXK8As/iG2aaWSOGNxEK+NFPOQZQGcyvwLHAdNgYssTq3KO3n3KEodjDDfRumwHDk7HneZ0ytP8gfLuyxsIaYEgu7INT02Sql48b1tYom98PuLBVkrVOwUsfg2S2boQZ3hIPwpPAlPP6VL/HqPifus0cEnYOeX9gQhZM6sV7swZL3fDXrLSSUOpHe1FswJOVMyixoTnCq7W/GhkKoZwlVfcy7JzpCz/O1le+xujWZnRUT1/b0RVlr+cfPNr04uRIUxD2dYH8ff4PmK1qhw8mPUGOoJQtfHwaK5O2BnbrR93UVMhe0nxkKaUCYG86rJR+5934k/cBy0G+WpQvz6LwvU7qqYWZVrFKslrPopQMfq7FgRDOwfedaR+Shf5IzhmfRxelnVWRh/Z9Z6xiD/oHGsjF9fFCC8J9SmO7hue5XBLZ/fcRoAQw3XWDPO3uLFKMq3wUcFUct9m8OWjfvR1EBXVMCarbT6e3W58UFQp1ZdZxuw3onyOgYdQLVh3TPl7A5Z7pxU5JPZ2x9oCKHAk7pwViaCKRWUCcft1s+wYdOyN3/Unb8VcZelzUBmu8TzJwO6I5KMgnPbKDr/NljwLxj5UiJ1WnKQxSz1DSeEjsk07x5Zp65gGkPWPtpmNTBwplm7ktPcE5Lq4Gli3atYlj0qu1TyiDZV4srNAI=
+  - secure: jCxyBDPdyeRVqT5GEc1RgCGRyIGD6M9d7IVqf1dzTkOxEe7j+PbxPgaJlDCao/gH2SF9gD6EpA3ZVyp+iUk3W/HMrKKRhDiuMb/xrrHr2Q4yC4uW64EOHAG7M2/WaVeS73ZvLpz0KbVA/S/jarYtAapDLFF+j/jFF6n7ES8ZJ8+pKdz5iEsUD7Hh78CaaebapxCbM7UlbB05KDAOmS8PneNZiBGv9H91P4YnfYxYIUXwuLpF4Vqezh9a6p49nHUVEJYE6BScKo0kDHez93dsHOUbSTDvde4cptRRWWDodryaL7r3m/q62wMRXmoKERWt8Ubr+jRyUdHkV/Gv2qW7GTDDDGdX6vjeRfRkn0WPVbX5uMzMDffkSR/Q4bjIOQ97sJa1FZdv4OumvlNwhJF7A2yn1sl23UvToZHbhRrLzzrx3VrrjAy6yLv01IQWolNfK1x7XRVNe0O0tKA3OFyHAkIYapYXkPbvgt9PRvnigTufBnZwwJe3ap2GVBk6W9H5G8t8KbBlDCCcjVoXAgmnm9IccHzBMrHHvw0DVg5zxD4e7hWODxXsIxk43qkrNpUZk9kHOX7ckozXWpRlxOxXwtAKM4/Lzs4AHrCafyHP8BaWPTNUfC5CASwLRQcVffkquO8WnL77KPhor3Kg/vUjhnCTi6MnzjDhI9rHkO1lGMs=
